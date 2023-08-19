@@ -9,16 +9,12 @@ import '@splidejs/react-splide/css/core';
 function Veggie() {
   const [vegan, setVegan] = useState([])
 
-    useEffect(() => {
-        getVegan()
-    }, [])
-
     const getVegan = async () => {
-
-        const newVeggies = localStorage.getItem('veggies') || [];
-        console.log(typeof(newVeggies))
+        const newVeggies = localStorage.getItem('veggies');
+        console.log(newVeggies)
 
         if (newVeggies) { 
+            console.log(newVeggies)
             setVegan(JSON.parse(newVeggies))
         } else {
             const apiKey = import.meta.env.VITE_KEY;
@@ -30,6 +26,10 @@ function Veggie() {
             setVegan(data.recipes)
         }
     }
+
+    useEffect(() => {
+        getVegan()
+    }, [])
 
   return (
     <div>
