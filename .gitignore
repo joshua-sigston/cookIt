@@ -12,13 +12,13 @@ dist
 dist-ssr
 
 # misc
-# .DS_Store
-# .env
-# .env.local
-# .env.development.local
-# .env.test.local
-# .env.production.local
-# Editor directories and files
+.DS_Store
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
