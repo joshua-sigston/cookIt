@@ -12,7 +12,7 @@ import { GiCampCookingPot } from 'react-icons/gi';
 function App() {
   const [hamburger, setHamburger] = useState(false);
   const [recipeList, setRecipeList] = useState([]);
-  console.log(recipeList);
+
   const handleToggleNav = () => {
     setHamburger((prevState) => !prevState);
   };

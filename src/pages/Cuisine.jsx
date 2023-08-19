@@ -5,7 +5,6 @@ import {motion} from 'framer-motion'
 function Cuisine() {
     const [cuisine, setCuisine] = useState([])
     let params = useParams()
-    console.log(cuisine)
 
     const getCuisine =  async (name) => {
         const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${import.meta.env.VITE_KEY}&cuisine=${name}`)
