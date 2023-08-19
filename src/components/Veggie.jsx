@@ -10,13 +10,13 @@ function Veggie() {
   const [vegan, setVegan] = useState([])
 
     const getVegan = async () => {
-        const newVeggies = localStorage.getItem('veggies');
-        console.log(newVeggies)
+        // const newVeggies = localStorage.getItem('veggies');
+        // console.log(newVeggies)
 
-        if (newVeggies) { 
-            console.log(newVeggies)
-            setVegan(JSON.parse(newVeggies))
-        } else {
+        // if (newVeggies) { 
+        //     console.log(newVeggies)
+        //     setVegan(JSON.parse(newVeggies))
+        // } else {
             const apiKey = import.meta.env.VITE_KEY;
             const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}&number=9&tags=vegetarian`)
             const data = await api.json()
@@ -24,7 +24,7 @@ function Veggie() {
             localStorage.setItem('veggies', JSON.stringify(data.recipes))
 
             setVegan(data.recipes)
-        }
+        // }
     }
 
     useEffect(() => {
