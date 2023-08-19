@@ -15,18 +15,18 @@ function Popular() {
     }, [])
 
     const getRandomRecipes = async () => {
-        const newRecipes = localStorage.getItem('recipes')
+        // const newRecipes = localStorage.getItem('recipes')
 
-        if (newRecipes) { 
-            setRecipes(JSON.parse(newRecipes))
-        } else {
+        // if (newRecipes) { 
+        //     setRecipes(JSON.parse(newRecipes))
+        // } else {
             const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${import.meta.env.VITE_KEY}&number=9`)
             const data = await api.json()
 
             localStorage.setItem('recipes', JSON.stringify(data.recipes))
 
             setRecipes(data.recipes)
-        }
+        // }
     }
 
   return (
