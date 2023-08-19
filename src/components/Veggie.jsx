@@ -16,9 +16,9 @@ function Veggie() {
     const getVegan = async () => {
 
         const newVeggies = localStorage.getItem('veggies') || [];
-        
+        console.log(typeof(newVeggies))
 
-        if (newVeggies.length > 0) { 
+        if (newVeggies) { 
             setVegan(JSON.parse(newVeggies))
         } else {
             const apiKey = import.meta.env.VITE_KEY;
