@@ -33,8 +33,6 @@ function Veggie() {
     getVegan();
   }, []);
 
-  if (vegan.length <= 0) return <p>Loading...</p>;
-
   return (
     <div>
       <Splide
