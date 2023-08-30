@@ -9,28 +9,20 @@ import '@splidejs/react-splide/css/core';
 
 function Popular() {
   const [recipes, setRecipes] = useState([]);
-  console.log('popular');
+
   useEffect(() => {
     getRandomRecipes();
   }, []);
 
   const getRandomRecipes = async () => {
-    // const newRecipes = localStorage.getItem('recipes')
-
-    // if (newRecipes) {
-    //     setRecipes(JSON.parse(newRecipes))
-    // } else {
     const api = await fetch(
       `https://api.spoonacular.com/recipes/random?apiKey=${
         import.meta.env.VITE_KEY
       }&number=9`,
     );
     const data = await api.json();
-    console.log(data);
-    // localStorage.setItem('recipes', JSON.stringify(data.recipes));
 
     setRecipes(data.recipes);
-    // }
   };
 
   return (

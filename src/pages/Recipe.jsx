@@ -1,7 +1,9 @@
-import { React, useEffect, useState } from 'react';
+import { React, useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import RecipeContext from '../store/savedRecipe-context';
 
 function Recipe({ recipeList, setRecipeList }) {
+  const recipeCtx = useContext(RecipeContext);
   const [details, setDetails] = useState({});
   const [activeTab, setActiveTab] = useState('instructions');
 
@@ -9,7 +11,9 @@ function Recipe({ recipeList, setRecipeList }) {
 
   const recipeDetails = async () => {
     const data = await fetch(
-      `https://api.spoonacular.com/recipes/${params.name}/information?apiKey=${import.meta.env.VITE_KEY}`,
+      `https://api.spoonacular.com/recipes/${params.name}/information?apiKey=${
+        import.meta.env.VITE_KEY
+      }`,
     );
     const detailData = await data.json();
     setDetails(detailData);
@@ -27,10 +31,8 @@ function Recipe({ recipeList, setRecipeList }) {
     setActiveTab('ingredients');
   };
 
-  const handleSaveRecipe = (e) => {
-    setRecipeList((prevState) => {
-      return [...prevState, details];
-    });
+  const handleSaveRecipe = () => {
+    recipeCtx.addRecipe(details);
   };
 
   return (
